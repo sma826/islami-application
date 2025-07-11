@@ -1,14 +1,23 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:islami_application/modules/layout/hadeth/widgets/hadeth_card.dart';
 
 import '../../../core/constants/assets.dart';
+import '../../../models/hadeth_data_model.dart';
 
-class HadethView extends StatelessWidget {
+class HadethView extends StatefulWidget {
   const HadethView({super.key});
 
   @override
+  State<HadethView> createState() => _HadethViewState();
+}
+
+class _HadethViewState extends State<HadethView> {
+  List<HadethDataModel> hadethDataList = [];
+  @override
   Widget build(BuildContext context) {
+    if (hadethDataList.isEmpty) loadHadethData();
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -20,7 +29,9 @@ class HadethView extends StatelessWidget {
         children: [
           Image.asset(Assets.headerLogo),
           CarouselSlider(
-              items: [HadethCard()],
+              items: hadethDataList.map((e) {
+                return HadethCard(hadethDataModel: e);
+              }).toList(),
               options: CarouselOptions(
                 height: MediaQuery
                     .of(context)
@@ -44,5 +55,28 @@ class HadethView extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future <void> loadHadethData() async {
+    List<String> hadethContentsList = [];
+    List<String> hadethTittlesList = [];
+
+    for (int i = 1; i <= 50; i++) {
+      String path = 'assets/Hadeth_files/h$i.txt';
+      String content = await rootBundle.loadString(path);
+
+      int indexOfTittle = content.indexOf("\n");
+      String hadethTittle = content.substring(0, indexOfTittle);
+      String hadethContent = content.substring(indexOfTittle + 1);
+
+      HadethDataModel hadethDataModel = HadethDataModel(
+          hadethTittle: hadethTittle,
+          hadethContent: hadethContent);
+
+      hadethDataList.add(hadethDataModel);
+    }
+    setState(() {
+
+    });
   }
 }
