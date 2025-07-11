@@ -13,7 +13,7 @@ class HadethCard extends StatelessWidget {
       height: 590,
       decoration: BoxDecoration(
         color: ColorPallete.primaryColor,
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(16),
       ),
       child: Stack(
         alignment: Alignment(0, 0),
