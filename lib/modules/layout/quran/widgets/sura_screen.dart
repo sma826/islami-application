@@ -59,13 +59,13 @@ class _SuraScreenState extends State<SuraScreen> {
             ],
           ),
           Padding(
-            // padding: const EdgeInsets.only(
-            //   top: 20,
-            //   left: 20,
-            //   right: 20,
-            //   bottom: 100
-            // ),
-            padding: const EdgeInsets.all(20),
+            padding: const EdgeInsets.only(
+                top: 20,
+                left: 20,
+                right: 20,
+                bottom: 100
+            ),
+            // padding: const EdgeInsets.all(20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
