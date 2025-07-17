@@ -88,7 +88,8 @@ class _QuranViewState extends State<QuranView> {
                   ),
                 ),
             SuraListWidget(onSuraTap: onSuraTap),
-          ]],
+          ]
+          ,
         ),
       ),
     );
