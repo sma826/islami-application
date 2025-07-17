@@ -5,8 +5,13 @@ import 'package:islami_application/modules/layout/quran/widgets/sura_screen.dart
 
 class SuraListItem extends StatelessWidget {
   final SuraDataModel suraDataModel;
+  final VoidCallback onSuraTab;
 
-  const SuraListItem({super.key, required this.suraDataModel});
+  const SuraListItem({
+    super.key,
+    required this.suraDataModel,
+    required this.onSuraTab,
+  });
 
   @override
   Widget build(BuildContext context) {

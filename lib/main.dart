@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:islami_application/core/constants/theme_manager.dart';
-import 'package:islami_application/modules/layout/hadeth/hadeth_view.dart';
+import 'package:islami_application/core/services/local_storage_services.dart';
 import 'package:islami_application/modules/layout/layout_view.dart';
 import 'package:islami_application/modules/layout/quran/widgets/sura_screen.dart';
 import 'package:islami_application/modules/splash/splash_view.dart';
 
 import 'modules/intro_screens/intro_screens.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await LocalStorageServices.init();
+
   runApp(const MyApp());
 }
 
