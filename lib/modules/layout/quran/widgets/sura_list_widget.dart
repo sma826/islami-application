@@ -3,7 +3,10 @@ import 'package:islami_application/core/constants/constants.dart';
 import 'package:islami_application/modules/layout/quran/widgets/sura_list_item.dart';
 
 class SuraListWidget extends StatelessWidget {
-  const SuraListWidget({super.key});
+
+  final void Function(int) onSuraTap;
+
+  const SuraListWidget({super.key, required this.onSuraTap});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +21,9 @@ class SuraListWidget extends StatelessWidget {
             physics: NeverScrollableScrollPhysics(),
             padding: EdgeInsets.symmetric(vertical: 10),
             itemBuilder: (context, index) {
-              return SuraListItem(suraDataModel: Constants.suraDataList[index]);
+              return SuraListItem(
+                  onSuraTab: () => onSuraTap(index),
+                  suraDataModel: Constants.suraDataList[index]);
             },
             separatorBuilder: (context, index) {
               return Divider(indent: 40, endIndent: 40);
